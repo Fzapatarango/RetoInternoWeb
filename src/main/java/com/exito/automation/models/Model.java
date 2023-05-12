@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Model {
-    private String Category;
-    private String Subcategory;
+    private String category;
+    private String subcategory;
 
 }

@@ -15,15 +15,15 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 public class GoToCategory implements Task {
 
     private Model model;
-    private int Quantity;
+    private int quantity;
 
-    public static GoToCategory inExito(Model model, int Quantity) {
-        return Tasks.instrumented(GoToCategory.class, model, Quantity);
+    public static GoToCategory inExito(Model model, int quantity) {
+        return Tasks.instrumented(GoToCategory.class, model, quantity);
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        for (int i = 1; i <= Quantity; i++) {
+        for (int i = 1; i <= quantity; i++) {
             actor.attemptsTo(Click.on(BTN_SIDE_MENU),
                     Click.on(BTN_CATEGORY.of(model.getCategory())),
                     WaitUntil.the(BTN_SUBCATEGORY.of(model.getSubcategory()), isVisible()).forNoMoreThan(2).seconds(),
@@ -33,6 +33,6 @@ public class GoToCategory implements Task {
                     BuyProducts.onExito());
         }
         actor.attemptsTo(Click.on(BTN_CART));
-        actor.remember("PRODUCTS_ADDED", Quantity);
+        actor.remember("PRODUCTS_ADDED", quantity);
     }
 }
